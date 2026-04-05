@@ -86,7 +86,3 @@ This repository contains a licensing service developed as a side project while w
             "message": "Key activated"
         }
         ```
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
