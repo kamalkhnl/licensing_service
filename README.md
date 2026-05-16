@@ -56,6 +56,7 @@ This repository contains a licensing service developed as a side project while w
 ### API Endpoints
 
 - **Assign Key**: `POST /keys/assign_key/`
+    - Activates an available serial key for a device. Repeating the same request for the same device is idempotent.
     - Request body:
         ```json
         {
@@ -63,7 +64,7 @@ This repository contains a licensing service developed as a side project while w
             "device_id": "YOUR_DEVICE_ID"
         }
         ```
-    - Response:
+    - Success response:
         ```json
         {
             "status": "success",
@@ -72,6 +73,7 @@ This repository contains a licensing service developed as a side project while w
         ```
 
 - **Check Key**: `POST /keys/check_key/`
+    - Validates whether a key is available or already assigned to the requesting device without activating unused keys.
     - Request body:
         ```json
         {
@@ -79,10 +81,12 @@ This repository contains a licensing service developed as a side project while w
             "device_id": "YOUR_DEVICE_ID"
         }
         ```
-    - Response:
+    - Success response for an available key:
         ```json
         {
             "status": "success",
-            "message": "Key activated"
+            "message": "Key is valid and available",
+            "valid": true,
+            "activated": false
         }
         ```
